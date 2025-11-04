@@ -1,1 +1,44 @@
-<!doctype html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0'/><title>Cloudpickel</title></head><body><div id='root'></div><script type='module' src='/src/main.jsx'></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloudpickel</title>
+
+    <!-- Prevent cache issues -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Auto-refresh if new version deployed -->
+    <script>
+      (async () => {
+        try {
+          const key = "cloudpickel-build-version";
+          const res = await fetch("/manifest.json?_=" + Date.now());
+          const manifest = await res.json();
+          const latest = manifest["index.html"] || Date.now().toString();
+          const current = localStorage.getItem(key);
+          if (current !== latest) {
+            localStorage.setItem(key, latest);
+            window.location.reload(true);
+          }
+        } catch (e) {
+          console.warn("Cache check skipped", e);
+        }
+      })();
+
+      // Disable any service workers (avoid stale cache)
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((regs) =>
+          regs.forEach((reg) => reg.unregister())
+        );
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
