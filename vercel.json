@@ -1,6 +1,0 @@
-{
-  "builds": [{ "src": "cloudpickel_final_cyan/package.json", "use": "@vercel/static-build" }],
-  "routes": [
-    { "src": "/(.*)", "dest": "/cloudpickel_final_cyan/index.html" }
-  ]
-}
