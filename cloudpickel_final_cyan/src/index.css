@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+:root{
+  --grad-start: #06b6d4; /* cyan */
+  --grad-mid: #14b8a6;   /* teal */
+  --grad-end: #0ea5a4;
+  --accent: #7c3aed;
+}
+body { @apply bg-white text-gray-900; font-family:'Poppins',sans-serif; -webkit-font-smoothing:antialiased; }
+.bg-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55)); }
+.text-shadow { text-shadow: 0 6px 18px rgba(0,0,0,0.45); }
