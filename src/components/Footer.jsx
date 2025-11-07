@@ -47,7 +47,7 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-semibold mb-2">Contact</h3>
           <p className="text-sm">Email: vittalrao@cloudpickel.com</p>
-          <p className="text-sm">Phone: +91 7204008961</p>
+          <p className="text-sm">Phone: +91 9448298630</p>
         </div>
       </div>
       <p className="text-center text-xs text-gray-500 mt-6">
@@ -56,3 +56,4 @@ export default function Footer() {
     </footer>
   );
 }
+
